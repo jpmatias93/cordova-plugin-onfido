@@ -7,7 +7,7 @@
     <description>Cordova plugin for Onfido</description>
     <license>MIT</license>
     <keywords>onfido,onfido-cordova,onfido-plugin,onfido-cordova-ios,onfido-cordova-android</keywords>
-    <repo>https://github.com/rewireltd1/cordova-plugin-onfido.git</repo>
+    <repo>https://github.com/farxelemon/cordova-plugin-onfido.git</repo>
 
     <!-- <engines>
       <engine name="cordova" version=">=6.4.0" />
