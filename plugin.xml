@@ -63,6 +63,10 @@
         <config-file target="*-Info.plist" parent="NSMicrophoneUsageDescription">
             <string>Required for video capture</string>
         </config-file>
+            
+        <config-file parent="UIUserInterfaceStyle" target="*-Info.plist">
+            <string>Light</string>
+        </config-file>
 
         <header-file src="src/ios/OnFidoBridge.h"/>
         <source-file src="src/ios/OnFidoBridge.m"/>
