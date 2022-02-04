@@ -11,7 +11,7 @@
   "description": "Cordova plugin for Onfido",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rewireltd1/cordova-plugin-onfido.git"
+    "url": "git+https://github.com/farxelemon/cordova-plugin-onfido.git"
   },
   "keywords": [
     "onfido",
@@ -23,7 +23,7 @@
   "author": "Rewire LTD",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rewireltd1/cordova-plugin-onfido/issues"
+    "url": "https://github.com/farxelemon/cordova-plugin-onfido/issues"
   },
-  "homepage": "https://github.com/rewireltd1/cordova-plugin-onfido#readme"
+  "homepage": "https://github.com/farxelemon/cordova-plugin-onfido#readme"
 }
