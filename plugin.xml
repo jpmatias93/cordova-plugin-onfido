@@ -65,6 +65,6 @@
         <source-file src="src/ios/OnFidoBridge.m"/>
 
         <pods-config ios-min-version="9.0" use-frameworks="true"/>
-        <framework src="Onfido" type="podspec" spec="13.2.0"/>
+        <framework src="Onfido" type="podspec" spec="24.2.0"/>
     </platform>
 </plugin>
