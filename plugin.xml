@@ -30,24 +30,6 @@
         </activity>
     </config-file>
 
-    <!-- android -->
-    <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Onfido">
-                <param name="android-package" value="com.plugin.onfido.OnFidoBridge"/>
-                <param name="android-package-OnfidoActivity" value="com.plugin.onfido.OnfidoActivity"/>
-                <param name="onload" value="true"/>
-            </feature>
-        </config-file>
-        <edit-config file="app/src/main/AndroidManifest.xml" mode="overwrite" target="/manifest/application">
-                <application android:supportsRtl="false" />
-        </edit-config>
-
-        <source-file src="src/android/OnFidoBridge.java" target-dir="src/com/plugin/onfido"/>
-        <source-file src="src/android/OnfidoActivity.java" target-dir="src/com/plugin/onfido"/>
-        <framework src="src/android/onfido.gradle" custom="true" type="gradleReference"/>
-    </platform>
-
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
