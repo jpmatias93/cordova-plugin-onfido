@@ -4,7 +4,6 @@
   "cordova": {
     "id": "cordova-plugin-onfido",
     "platforms": [
-      "android",
       "ios"
     ]
   },
