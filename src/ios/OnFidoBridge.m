@@ -18,91 +18,46 @@
 
     ONFlowConfigBuilder *configBuilder = [ONFlowConfig builder];
 
-    NSDictionary* appearanceOption = options[@"appearance"];
-    NSDictionary* primaryColorOption = appearanceOption[@"primaryColor"];
-    NSDictionary* primaryColorPressedOption = appearanceOption[@"primaryColorPressed"];
 
-    if (primaryColorOption != NULL && primaryColorPressedOption != NULL) {
-        int primaryColorRed = [primaryColorOption[@"red"] integerValue];
-        int primaryColorGreen = [primaryColorOption[@"green"] integerValue];
-        int primaryColorBlue =  [primaryColorOption[@"blue"] integerValue];
+    [configBuilder withSdkToken:token];
+    [configBuilder withWelcomeStep];
+    [configBuilder withDocumentStep];
 
-        UIColor* primaryColor = [UIColor colorWithRed:primaryColorRed/255.0f
-                                                green:primaryColorGreen/255.0f
-                                                blue:primaryColorBlue/255.0f
-                                                alpha:1.0f];
-        
-        int primaryColorPressedRed = [primaryColorPressedOption[@"red"] integerValue];
-        int primaryColorPressedGreen = [primaryColorPressedOption[@"green"] integerValue];
-        int primaryColorPressedBlue =  [primaryColorPressedOption[@"blue"] integerValue];
-
-        UIColor* primaryColorPressed = [UIColor colorWithRed:primaryColorPressedRed/255.0f
-                                                green:primaryColorPressedGreen/255.0f
-                                                blue:primaryColorPressedBlue/255.0f
-                                                alpha:1.0f];
-
-        ONAppearance *appearance = [[ONAppearance alloc]
-            initWithPrimaryColor:primaryColor
-            primaryTitleColor: [UIColor whiteColor]
-            primaryBackgroundPressedColor:primaryColorPressed
-            supportDarkMode:FALSE];
-
-        [configBuilder withAppearance:appearance];
-    }
-
-    [configBuilder withToken:token];
-    [configBuilder withApplicantId:applicantId];
+    NSError *variantError = NULL;
+    Builder *variantBuilder = [ONFaceStepVariantConfig builder];
+    [variantBuilder withPhotoCaptureWithConfig: NULL];
+    [configBuilder withFaceStepOfVariant: [variantBuilder buildAndReturnError: &variantError]];
     
-    if (locale != NULL){
-        NSString * path = [[NSBundle mainBundle] pathForResource:locale ofType:@"lproj"];
-        NSBundle * bundle = nil;
-        if(path == nil){
-            bundle = [NSBundle mainBundle];
-        }else{
-            bundle = [NSBundle bundleWithPath:path];
-        }
-        [configBuilder withCustomLocalizationWithTableName:@"Localizable" in: bundle];
-    }
-
-    Builder * variantBuilder = [ONFaceStepVariantConfig builder];
-    NSError * variantError = NULL;
-
-    if([flowSteps containsObject: @"face"]) {
-        [variantBuilder withPhotoCaptureWithConfig: NULL];
-        [configBuilder withFaceStepOfVariant:[variantBuilder buildAndReturnError: &variantError]];
-    } else if([flowSteps containsObject: @"face_video"]) {
-        [variantBuilder withVideoCaptureWithConfig: NULL];
-        [configBuilder withFaceStepOfVariant:[variantBuilder buildAndReturnError: &variantError]];
-    }
-
     if(variantError != NULL)
     {
         [self handleConfigsError:variantError :command.callbackId];
-        return ;
+        return;
     }
     
-    [configBuilder withDocumentStep];
+    
+    if (variantError == NULL) {
+      NSError *configError = NULL;
+      ONFlowConfig *config = [configBuilder buildAndReturnError:&configError];
 
-    NSError *configError = NULL;
-    ONFlowConfig *config = [configBuilder buildAndReturnError:&configError];
+        
+        if (configError == NULL) {
+                ONFlow *onFlow = [[ONFlow alloc] initWithFlowConfiguration:config];
 
-    if (configError == NULL) {
-        ONFlow *onFlow = [[ONFlow alloc] initWithFlowConfiguration:config];
+                [onFlow withResponseHandler:^(ONFlowResponse* response){
+                    [self handleOnFidoCallback: response :command.callbackId];
+                }];
 
-        [onFlow withResponseHandler:^(ONFlowResponse* response){
-            [self handleOnFidoCallback: response :command.callbackId];
-        }];
+                NSError *runError = NULL;
+                UIViewController *onfidoController = [onFlow runAndReturnError:&runError];
 
-        NSError *runError = NULL;
-        UIViewController *onfidoController = [onFlow runAndReturnError:&runError];
-
-        if (runError == NULL) {
-            [self.viewController presentViewController:onfidoController animated:YES completion:NULL];
-        } else {
-            [self showAlert:@"Error occured during Onfido flow. Look for details in console"];
-        }
-    } else
-        [self handleConfigsError:configError :command.callbackId];
+                if (runError == NULL) {
+                    [self.viewController presentViewController:onfidoController animated:YES completion:NULL];
+                } else {
+                    [self showAlert:@"Error occured during Onfido flow. Look for details in console"];
+                }
+            } else
+                [self handleConfigsError:configError :command.callbackId];
+      }
 }
 
 #pragma mark - "Private methods"
@@ -113,9 +68,9 @@
 
     ONDocumentResult* front = ((ONFlowResult*) documentsResult[0]).result;
     NSDictionary* frontKeyValue = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   front.id, @"id",
-                                   front.side, @"side",
-                                   front.type, @"type",
+                                   front, @"id",
+                                   front, @"side",
+                                   front, @"type",
                                    nil];
 
     [documentKeyValue setObject:frontKeyValue forKey:@"front"];
@@ -123,9 +78,9 @@
     if (([documentsResult count] > 1 && [documentsResult objectAtIndex:1] !=nil)) {
         ONDocumentResult* back = ((ONFlowResult*) documentsResult[1]).result;
         NSDictionary* backKeyValue = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      back.id, @"id",
-                                      back.side, @"side",
-                                      back.type, @"type",
+                                      back, @"id",
+                                      back, @"side",
+                                      back, @"type",
                                       nil];
         [documentKeyValue setObject:backKeyValue forKey:@"back"];
     }
@@ -144,16 +99,17 @@
         CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT messageAsString:@"User exit"];
         [self.commandDelegate sendPluginResult:result callbackId:callbackId];
     } else if(response.results) {
-        NSPredicate *documentResultPredicate = [NSPredicate predicateWithBlock:^BOOL(id flowResult, NSDictionary* bindings) {
-            if(((ONFlowResult*)flowResult).type == ONFlowResultTypeDocument) {
-                return YES;
-            } else {
-                return NO;
-            }
-        }];
+//        NSPredicate *documentResultPredicate = [NSPredicate predicateWithBlock:^BOOL(id flowResult, NSDictionary* bindings) {
+//            if(((ONFlowResult*)flowResult).type == ONFlowResultTypeDocument) {
+//                return YES;
+//            } else {
+//                return NO;
+//            }
+//        }];
 
-        NSArray* flowWithDocumentResults = [response.results filteredArrayUsingPredicate:documentResultPredicate];
-        NSString* documentJson = [self buildDocumentJson:flowWithDocumentResults];
+        //NSArray* flowWithDocumentResults = [response.results filteredArrayUsingPredicate:documentResultPredicate];
+        //NSString* documentJson = [self buildDocumentJson:flowWithDocumentResults];
+        NSString* documentJson = @"qwe";
 
         CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:documentJson];
         [self.commandDelegate sendPluginResult:result callbackId:callbackId];
@@ -169,10 +125,10 @@
 - (void)handleConfigsError: (NSError*) error : (id) callbackId {
     NSString* errMsg;
     switch (error.code) {
-        case ONFlowConfigErrorMissingToken:
+        /*case ONFlowConfigErrorMissingSDKToken:
             errMsg = @"No token provided";
             break;
-        case ONFlowConfigErrorMissingApplicant:
+        case ONFlowConfigErrorMissingSDKToken:
             errMsg = @"No applicant provided";
             break;
         case ONFlowConfigErrorMissingSteps:
@@ -180,7 +136,7 @@
             break;
         case ONFlowConfigErrorMultipleApplicants:
             errMsg = @"Failed to upload capture";
-            break;
+            break;*/
         default:
             errMsg = [NSString stringWithFormat:@"Unknown error occured. Code: %ld. Description: %@", error.code, error.description];
             break;
