@@ -10,23 +10,32 @@
 
 - (void)init: (CDVInvokedUrlCommand *)command {
     NSDictionary* options = [command.arguments objectAtIndex:0];
-    NSString* applicantId = [options objectForKey:@"applicant_id"];
     NSString* token = [options objectForKey:@"token"];
     NSString* locale = [options objectForKey:@"locale"];
-    NSArray* flowSteps = [options objectForKey:@"flow_steps"];
-    NSArray* documentTypes = [options objectForKey:@"document_types"]; // Not supported yet by Onfido SDK`s
 
     ONFlowConfigBuilder *configBuilder = [ONFlowConfig builder];
 
 
     [configBuilder withSdkToken:token];
     [configBuilder withWelcomeStep];
-    [configBuilder withDocumentStep];
+    //[configBuilder withDocumentStep];
 
     NSError *variantError = NULL;
     Builder *variantBuilder = [ONFaceStepVariantConfig builder];
     [variantBuilder withPhotoCaptureWithConfig: NULL];
     [configBuilder withFaceStepOfVariant: [variantBuilder buildAndReturnError: &variantError]];
+    
+    NSError *documentVariantError = NULL;
+    DocumentConfigBuilder *documentVariantBuilder = [ONDocumentTypeVariantConfig builder];
+    [documentVariantBuilder withNationalIdentityCardWithConfig:[[NationalIdentityConfiguration alloc] initWithCountry: @"AGO"]];
+    [configBuilder withDocumentStepOfType:[documentVariantBuilder buildAndReturnError: &documentVariantError]];
+    
+    //UI
+    ONAppearance *appearance = [[ONAppearance alloc] init];
+    appearance.primaryColor = [UIColor colorWithRed: 0.94 green: 0.36 blue: 0.10 alpha: 1.00];
+    appearance.primaryBackgroundPressedColor = [UIColor colorWithRed: 0.94 green: 0.36 blue: 0.10 alpha: 1.00];
+    appearance.secondaryBackgroundPressedColor = [UIColor colorWithRed: 0.94 green: 0.36 blue: 0.10 alpha: 1.00];
+    [configBuilder withAppearance:appearance];
     
     if(variantError != NULL)
     {
