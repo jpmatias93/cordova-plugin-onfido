@@ -21,15 +21,6 @@
         <clobbers target="plugin.onfido"/>
     </js-module>
 
-    <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest/application">
-        <activity android:name="com.plugin.onfido.OnfidoActivity" android:label="Onfido Activity">
-            <intent-filter>
-                <action android:name="com.plugin.onfido.OnfidoActivity"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-    </config-file>
-
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
