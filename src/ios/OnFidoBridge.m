@@ -37,6 +37,18 @@
     appearance.secondaryBackgroundPressedColor = [UIColor colorWithRed: 0.94 green: 0.36 blue: 0.10 alpha: 1.00];
     [configBuilder withAppearance:appearance];
     
+    //Locale
+    if (locale != NULL){
+        NSString * path = [[NSBundle bundleForClass:[ONFlowConfig class]] pathForResource:locale ofType:@"lproj"];
+        NSBundle * bundle = nil;
+        if(path == nil){
+            bundle = [NSBundle mainBundle];
+        }else{
+            bundle = [NSBundle bundleWithPath:path];
+        }
+        [configBuilder withCustomLocalizationWithTableName:@"Localizable" in: bundle];
+    }
+    
     if(variantError != NULL)
     {
         [self handleConfigsError:variantError :command.callbackId];
