@@ -40,6 +40,8 @@
         <config-file parent="UIUserInterfaceStyle" target="*-Info.plist">
             <string>Light</string>
         </config-file>
+            
+        <resource-file src="src/ios/Localizable_PT.strings" />
 
         <header-file src="src/ios/OnFidoBridge.h"/>
         <source-file src="src/ios/OnFidoBridge.m"/>
