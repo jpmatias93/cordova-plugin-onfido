@@ -11,7 +11,7 @@
 - (void)init: (CDVInvokedUrlCommand *)command {
     NSDictionary* options = [command.arguments objectAtIndex:0];
     NSString* token = [options objectForKey:@"token"];
-    NSString* locale = [options objectForKey:@"locale"];
+    //NSString* locale = [options objectForKey:@"locale"];
 
     ONFlowConfigBuilder *configBuilder = [ONFlowConfig builder];
 
@@ -38,16 +38,20 @@
     [configBuilder withAppearance:appearance];
     
     //Locale
-    if (locale != NULL){
-        NSString * path = [[NSBundle bundleForClass:[ONFlowConfig class]] pathForResource:locale ofType:@"lproj"];
-        NSBundle * bundle = nil;
-        if(path == nil){
-            bundle = [NSBundle mainBundle];
-        }else{
-            bundle = [NSBundle bundleWithPath:path];
-        }
-        [configBuilder withCustomLocalizationWithTableName:@"Localizable" in: bundle];
-    }
+//    if (locale != NULL){
+//        NSString * path = [[NSBundle bundleForClass:[ONFlowConfig class]] pathForResource:locale ofType:@"lproj"];
+//        NSBundle * bundle = nil;
+//        if(path == nil){
+//            bundle = [NSBundle mainBundle];
+//        }else{
+//            bundle = [NSBundle bundleWithPath:path];
+//        }
+//        //[configBuilder withCustomLocalizationWithTableName:@"Localizable" in: bundle];
+//        [configBuilder withCustomLocalizationWithTableName:@"Localizable_PT"];
+//    }
+    
+    //Set PT Locale Strings
+    [configBuilder withCustomLocalizationWithTableName:@"Localizable_PT"];
     
     if(variantError != NULL)
     {
