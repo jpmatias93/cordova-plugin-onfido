@@ -58,6 +58,10 @@
             </intent-filter>
         </activity>
     </config-file>
+        
+    <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+        <application android:supportsRtl="false" />
+    </edit-config>
 
     <!-- android -->
     <platform name="android">
@@ -68,10 +72,6 @@
                 <param name="onload" value="true"/>
             </feature>
         </config-file>
-            
-        <edit-config file="app/src/main/AndroidManifest.xml" mode="overwrite" target="/manifest/application">
-                <application android:supportsRtl="false" />
-        </edit-config>
 
         <source-file src="src/android/OnFidoBridge.java" target-dir="app/src/main/java/com/plugin/onfido"/>
         <source-file src="src/android/OnfidoActivity.java" target-dir="app/src/main/java/com/plugin/onfido"/>
