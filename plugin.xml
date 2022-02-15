@@ -69,7 +69,7 @@
             </feature>
         </config-file>
             
-        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="overwrite" target="/manifest/application">
                 <application android:supportsRtl="false" />
         </edit-config>
 
