@@ -68,7 +68,6 @@
                 <param name="android-package-OnfidoActivity" value="com.plugin.onfido.OnfidoActivity"/>
                 <param name="onload" value="true"/>
             </feature>
-            <application tools:replace="android:supportsRtl"/>
         </config-file>
 
         <source-file src="src/android/OnFidoBridge.java" target-dir="app/src/main/java/com/plugin/onfido"/>
