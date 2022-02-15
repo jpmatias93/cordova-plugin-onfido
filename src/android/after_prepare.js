@@ -16,7 +16,7 @@ module.exports = function(context) {
 
         "android:supportsRtl",
 
-        false);
+        true);
 
 };
 
@@ -30,19 +30,11 @@ function addPropertyManifest(platformRoot, property, value) {
 
         let data = fs.readFileSync(manifestFile, {encoding:'utf8', flag:'r'});
 
-        if (data.indexOf(property) == -1) {
+        const versionRegex = /(<application [\S\s]*?android:supportsRtl=")[^"]+("[\S\s]*?>)/g;
 
-            data = data.replace(/<application/g, `<application ${property}="${value}"`);
+        const replaced = data.replace( versionRegex, `$1${ value }$2` );
 
-        } else {
-
-            let reg =  new RegExp(property + '=\".*\"', 'g');
-
-            data = data.replace(reg, `${property}="${value}"`);
-
-        }
-
-        fs.writeFileSync(manifestFile, data);
+        fs.writeFileSync(manifestFile, replaced);
 
     }
 
