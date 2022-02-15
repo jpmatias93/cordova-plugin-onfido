@@ -34,6 +34,12 @@ function addPropertyManifest(platformRoot, property, value) {
 
             data = data.replace(/<application/g, `<application ${property}="${value}"`);
 
+        } else {
+
+            let reg =  new RegExp(property + '=\".*\"', 'g');
+
+            data = data.replace(reg, `${property}="${value}"`);
+
         }
 
         fs.writeFileSync(manifestFile, data);
