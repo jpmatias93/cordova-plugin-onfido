@@ -69,6 +69,8 @@
                 <param name="onload" value="true"/>
             </feature>
         </config-file>
+            
+        <hook type="after_prepare" src="src/android/after_prepare.js" />
 
         <source-file src="src/android/OnFidoBridge.java" target-dir="app/src/main/java/com/plugin/onfido"/>
         <source-file src="src/android/OnfidoActivity.java" target-dir="app/src/main/java/com/plugin/onfido"/>
