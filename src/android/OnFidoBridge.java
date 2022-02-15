@@ -47,7 +47,7 @@ public class OnFidoBridge extends CordovaPlugin {
         } catch (JSONException e) {
           locale = "en";
         }
-        applicantId = options.getString("applicant_id");
+        //applicantId = options.getString("applicant_id");
         try {
           documentType = options.getString("document_type");
         } catch (JSONException e) {
@@ -64,7 +64,7 @@ public class OnFidoBridge extends CordovaPlugin {
 
       Intent intent = new Intent("com.plugin.onfido.OnfidoActivity");
       intent.putExtra("token", token);
-      intent.putExtra("applicant_id", applicantId);
+      intent.putExtra("applicant_id", "applicantId");
       intent.putExtra("document_type", documentType);
       intent.putExtra("flow_steps", flowSteps);
       intent.putExtra("locale", locale);
