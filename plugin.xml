@@ -61,9 +61,6 @@
 
     <!-- android -->
     <platform name="android">
-        <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application">
-                <application tools:replace="android:supportsRtl"/>
-        </edit-config>
             
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Onfido">
@@ -71,6 +68,7 @@
                 <param name="android-package-OnfidoActivity" value="com.plugin.onfido.OnfidoActivity"/>
                 <param name="onload" value="true"/>
             </feature>
+            <application tools:replace="android:supportsRtl"/>
         </config-file>
 
         <source-file src="src/android/OnFidoBridge.java" target-dir="app/src/main/java/com/plugin/onfido"/>
