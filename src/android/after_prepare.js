@@ -16,7 +16,7 @@ module.exports = function(context) {
 
         "android:supportsRtl",
 
-        true);
+        false);
 
 };
 
