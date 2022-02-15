@@ -1,7 +1,44 @@
+def sdkVersion = '11.2.0'
+def versionCodeNumber = 1120
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode versionCodeNumber
+        versionName "$versionCode-sdk:$sdkVersion"
+        multiDexEnabled true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-  implementation 'com.onfido.sdk.capture:onfido-capture-sdk:5.2.0'
+    implementation "com.onfido.sdk.capture:onfido-capture-sdk:$sdkVersion"
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    // only required to support TLSv1.2 for devices with Android API lower than 5.x
+    implementation('com.google.android.gms:play-services-base:17.5.0') {
+        exclude group: 'com.android.support' // to avoid conflicts with your current support library
+    }
 }
