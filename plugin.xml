@@ -70,7 +70,7 @@
             </feature>
         </config-file>
         
-        <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application">
+        <edit-config file="AndroidManifest.xml" mode="overwrite" target="/manifest/application">
                 <application android:exported="false" />                                                                                    
         </edit-config>
             
