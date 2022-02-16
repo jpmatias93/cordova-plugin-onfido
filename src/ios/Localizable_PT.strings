@@ -16,13 +16,13 @@
 "onfido_doc_capture_alert_no_barcode_detail" = "Ficar num local bem iluminado e aproximar o cartão da câmara";
 /* Document error */
 "onfido_doc_capture_alert_no_barcode_title" = "Código de barras não detetado";
-"onfido_doc_confirmation_alert_blur_detail" = "Certifique-se de que tudo está nítido";
-"onfido_doc_confirmation_alert_blur_title" = "Foto desfocada detetada";
-"onfido_selfie_intro_list_item_face_forward" = "Fique virado para a frente e assegure-se de que os seus olhos são claramente visíveis";
+"onfido_doc_confirmation_alert_blur_detail" = "Certifique-se que os seus dados estão nítidos";
+"onfido_doc_confirmation_alert_blur_title" = "A foto parece desfocada";
+"onfido_selfie_intro_list_item_face_forward" = "Olhe para a câmara do seu telemóvel e assegure-se que os seus olhos são claramente visíveis";
 "onfido_selfie_intro_list_item_no_glasses" = "Retire os seus óculos, se necessário";
-"onfido_selfie_intro_subtitle" = "Iremos efetuar uma comparação comparação o seu documento";
+"onfido_selfie_intro_subtitle" = "Iremos efectuar uma comparação da sua selfie com o seu Documento de Identificação";
 /* Face capture intro */
-"onfido_selfie_intro_title" = "Tirar uma fotografia";
+"onfido_selfie_intro_title" = "Tirar uma selfie";
 "onfido_country_select_bottom_sheet_link_close" = "Fechar";
 "onfido_doc_confirmation_button_primary_license" = "Enviar fotografia";
 "onfido_doc_confirmation_button_primary_generic" = "Enviar fotografia";
@@ -32,7 +32,7 @@
 "onfido_doc_confirmation_button_primary_visa" = "Enviar fotografia";
 /* Country Selection Screen */
 "onfido_permission_button_primary_both" = "Permitir ambos";
-"onfido_permission_button_primary_cam" = "Ativar câmara";
+"onfido_permission_button_primary_cam" = "Activar câmara";
 "onfido_permission_button_primary_mic" = "Ativar microfone";
 "onfido_permission_body_both" = "Não podemos verificá-lo sem utilizar a sua câmara e microfone";
 "onfido_permission_body_cam" = "Não o podemos verificar sem a sua câmara";
