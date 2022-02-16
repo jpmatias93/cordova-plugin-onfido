@@ -66,6 +66,7 @@ public class OnfidoActivity extends Activity {
             final OnfidoConfig config = OnfidoConfig.builder(this)
                     .withCustomFlow(defaultStepsWithWelcomeScreen)
                     .withSDKToken(token)
+                    .withLocale(new Locale("pt"))
                     .build();
             client.startActivityForResult(this,         /*must be an activity*/
                     1,            /*this request code will be important for you on onActivityResult() to identity the onfido callback*/
