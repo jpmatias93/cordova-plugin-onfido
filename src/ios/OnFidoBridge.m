@@ -121,22 +121,10 @@
 
 - (void)handleOnFidoCallback: (ONFlowResponse*) response : (id) callbackId {
     if(response.userCanceled) {
-        CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT messageAsString:@"User exit"];
+        CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"0"];
         [self.commandDelegate sendPluginResult:result callbackId:callbackId];
     } else if(response.results) {
-//        NSPredicate *documentResultPredicate = [NSPredicate predicateWithBlock:^BOOL(id flowResult, NSDictionary* bindings) {
-//            if(((ONFlowResult*)flowResult).type == ONFlowResultTypeDocument) {
-//                return YES;
-//            } else {
-//                return NO;
-//            }
-//        }];
-
-        //NSArray* flowWithDocumentResults = [response.results filteredArrayUsingPredicate:documentResultPredicate];
-        //NSString* documentJson = [self buildDocumentJson:flowWithDocumentResults];
-        NSString* documentJson = @"qwe";
-
-        CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:documentJson];
+        CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"1"];
         [self.commandDelegate sendPluginResult:result callbackId:callbackId];
 
     } else if(response.error) {
