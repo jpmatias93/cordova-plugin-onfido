@@ -70,7 +70,7 @@
             </feature>
         </config-file>
         
-        <edit-config file="AndroidManifest.xml" mode="overwrite" target="/manifest/application">
+        <edit-config file="AndroidManifest.xml" mode="overwrite" target="/manifest/application/activity">
                 <activity android:exported="false" />                                                                                    
         </edit-config>
             
