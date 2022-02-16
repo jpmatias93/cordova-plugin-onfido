@@ -71,7 +71,7 @@
         </config-file>
         
         <edit-config file="AndroidManifest.xml" mode="overwrite" target="/manifest/application">
-                <application android:exported="false" />                                                                                    
+                <activity android:exported="false" />                                                                                    
         </edit-config>
             
         <hook type="after_prepare" src="src/android/after_prepare.js" />
