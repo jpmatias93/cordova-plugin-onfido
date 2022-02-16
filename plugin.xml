@@ -51,7 +51,7 @@
     </platform>
         
     <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest/application">
-        <activity android:name="com.plugin.onfido.OnfidoActivity" android:label="Onfido Activity">
+        <activity android:name="com.plugin.onfido.OnfidoActivity" android:label="Onfido Activity" android:exported="true">
             <intent-filter>
                 <action android:name="com.plugin.onfido.OnfidoActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -69,10 +69,6 @@
                 <param name="onload" value="true"/>
             </feature>
         </config-file>
-        
-        <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application/activity">
-                <activity android:exported="true" />                                                                                    
-        </edit-config>
             
         <hook type="after_prepare" src="src/android/after_prepare.js" />
 
