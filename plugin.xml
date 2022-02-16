@@ -70,8 +70,8 @@
             </feature>
         </config-file>
         
-        <edit-config file="AndroidManifest.xml" mode="overwrite" target="/manifest/application/activity">
-                <activity android:exported="false" />                                                                                    
+        <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application/activity">
+                <activity android:exported="true" />                                                                                    
         </edit-config>
             
         <hook type="after_prepare" src="src/android/after_prepare.js" />
