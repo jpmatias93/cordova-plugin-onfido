@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="onfidoPrimaryButtonColor">#f05d1a</color>
+    <color name="onfidoPrimaryButtonColorPressed">#f05d1a</color>
+</resources>
