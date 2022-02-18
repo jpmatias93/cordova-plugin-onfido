@@ -1,0 +1,15 @@
+<resources>
+<!-- Locale identifier -->
+    <string name="onfido_locale">pt</string>
+    <string name="onfido_welcome_subtitle">Pode demorar alguns minutos</string>
+    <string name="onfido_welcome_list_header">Utilize a sua câmara para fotografar:</string>
+    <string name="onfido_welcome_list_item_doc_generic">Tire uma fotografia do seu documento de identidade</string>
+    <string name="onfido_welcome_list_item_face_photo">Tire uma foto do seu rosto</string>
+    <string name="onfido_welcome_button_primary_doc">Começar</string>
+    <string name="onfido_doc_capture_header_id_front">Submeter cartão de identidade (frente)</string>
+    <string name="onfido_doc_capture_header_id_back">Submeter cartão de identidade (verso)</string>
+    <string name="onfido_app_title_selfie_confirmation">Verifique a sua selfie</string>
+    <string name="onfido_app_title_selfie_intro">Verifique a sua selfie</string>
+    <string name="onfido_selfie_confirmation_button_primary">Confirmar</string>
+    <string name="onfido_selfie_confirmation_button_secondary">Repetir</string>
+</resources>
