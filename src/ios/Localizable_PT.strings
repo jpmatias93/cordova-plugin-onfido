@@ -284,7 +284,7 @@
 "onfido_country_select_search_results_none_accessibility" = "Sem resultados";
 "onfido_country_select_search_results_one_accessibility" = "Um resultado encontrados";
 "onfido_country_select_search_results_multiple_accessibility" = "%d resultados encontrados";
-"onfido_doc_confirmation_alert_crop_detail" = "Certifique-se de que o documento é totalmente visível";
+"onfido_doc_confirmation_alert_crop_detail" = "Certifique-se que o documento está totalmente visível";
 "onfido_doc_confirmation_alert_crop_title" = "Imagem cortada detectada";
 "onfido_doc_upload_progress_label" = "A verificar a qualidade da imagem";
 "onfido_video_capture_turn_success_accessibility" = "Cabeça virada detectada";
