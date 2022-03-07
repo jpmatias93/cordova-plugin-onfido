@@ -53,7 +53,7 @@
     <string name="onfido_country_select_error_no_country_title">País não encontrado</string>
     <string name="onfido_country_select_list_header_all">Todos os países</string>
     <string name="onfido_country_select_list_header_suggested">País sugerido</string>
-    <string name="onfido_doc_capture_alert_glare_detail">Afaste-se da luz direta</string>
+    <string name="onfido_doc_capture_alert_glare_detail">Afaste-se da luz directa</string>
     <string name="onfido_doc_capture_alert_glare_title">Encandeamento detectado</string>
     <string name="onfido_doc_capture_alert_manual_capture_detail">Alinhar documento, depois carregar no botão</string>
     <string name="onfido_doc_capture_alert_manual_capture_title">Tente tirar fotografias manualmente</string>
