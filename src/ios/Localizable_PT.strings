@@ -68,7 +68,7 @@
 "onfido_doc_capture_header_folded_doc_front" = "Profilfotoseite";
 "onfido_doc_capture_prompt_button_paper" = "Documento em papel";
 "onfido_app_title_doc_capture_license_fr" = "Carta de condução francesa";
-"onfido_doc_capture_alert_glare_detail" = "Afaste-se da luz direta";
+"onfido_doc_capture_alert_glare_detail" = "Afaste-se da luz directa";
 /* Glare Detection */
 "onfido_doc_capture_alert_glare_title" = "Encandeamento detectado";
 /* Folded paper document capture */
