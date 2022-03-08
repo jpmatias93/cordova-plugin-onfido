@@ -14,7 +14,7 @@ module.exports = {
         console.log("*************************************");
 
         if (fs.existsSync(destDir)) {
-            if (!fs.existsSync(destFile)) {
+            if (fs.existsSync(destFile)) {
                 console.log("*************************************");
                 console.log(`creating new  ${destFile}`);
                 console.log("*************************************");
