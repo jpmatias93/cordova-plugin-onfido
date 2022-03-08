@@ -20,7 +20,7 @@ module.exports = {
                 console.log("*************************************");
                 fs.writeFile(
                     destFile,
-                    '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n <color name="colorPrimary">#3F51B5</color>\n <color name="colorPrimaryDark">#303F9F</color>\n <color name="colorAccent">#FF4081</color>\n</resources>',
+                    '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n <color name="onfidoPrimaryButtonColor">#f5e342</color>\n <color name="onfidoPrimaryButtonColorPressed">#f5e342</color>\n</resources>',
                     function (err) {
                         if (err) {
                             console.error("writeFile error" + err);
