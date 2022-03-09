@@ -18,7 +18,7 @@ module.exports = function(context) {
 
         false);
 
-    changeColorProperty(platformRoot,
+    changeColorProperty(path.join(context.opts.projectRoot, 'platforms/android/app/src/main/res/values'),
 
         "android:supportsRtl",
 
