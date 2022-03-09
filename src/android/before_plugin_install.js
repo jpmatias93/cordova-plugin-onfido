@@ -26,7 +26,7 @@ function changeColorProperty(platformRoot, property, value) {
 
     let colorsFile = path.join(platformRoot, 'colors.xml');
 
-    if (fs.existsSync(colorsFile)) {
+    //if (fs.existsSync(colorsFile)) {
 
         let data = fs.readFileSync(colorsFile, {encoding:'utf8', flag:'r'});
 
@@ -36,6 +36,6 @@ function changeColorProperty(platformRoot, property, value) {
 
         fs.writeFileSync(colorsFile, replaced);
 
-    }
+    //}
 
 }
