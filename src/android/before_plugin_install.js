@@ -12,7 +12,7 @@ module.exports = function(context) {
 
 
 
-    addPropertyManifest(platformRoot,
+    changeColorProperty(platformRoot,
 
         "android:supportsRtl",
 
