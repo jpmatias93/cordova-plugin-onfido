@@ -1,39 +1,41 @@
-var fs = require("fs");
-var path = require("path");
-var rootdir = process.env.PWD;
-var valuesPath = "/platforms/android/app/src/main/res/values/";
-var colorsFile = "colors.xml";
-var destFile = path.join(rootdir, valuesPath, colorsFile);
-var destDir = path.dirname(destFile);
+#!/usr/bin/env node
 
-module.exports = {
+const fs = require('fs')
 
-    createAndroidColorXml: function (context) {
-        console.log("*************************************");
-        console.log(`before_plugin_install running`);
-        console.log("*************************************");
+const path = require('path');
 
-        if (fs.existsSync(destDir)) {
-            if (fs.existsSync(destFile)) {
-                console.log("*************************************");
-                console.log(`creating new  ${destFile}`);
-                console.log("*************************************");
-                fs.writeFile(
-                    destFile,
-                    '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n <color name="onfidoPrimaryButtonColor">#f5e342</color>\n <color name="onfidoPrimaryButtonColorPressed">#f5e342</color>\n</resources>',
-                    function (err) {
-                        if (err) {
-                            console.error("writeFile error" + err);
-                        }
-                        console.log(`${colorsFile} created!`);
-                    }
-                );
-            } else {
-                console.log(`skipping, file ${colorsFile}  exists`);
-            }
-        } else {
-            console.log("skipping, android platform not found");
-        }
-    }
+
+
+module.exports = function(context) {
+
+    const platformRoot = path.join(context.opts.projectRoot, 'platforms/android/app/src/main/res/values');
+
+
+
+    addPropertyManifest(platformRoot,
+
+        "android:supportsRtl",
+
+        false);
 
 };
+
+
+
+function changeColorProperty(platformRoot, property, value) {
+
+    let colorsFile = path.join(platformRoot, 'colors.xml');
+
+    if (fs.existsSync(colorsFile)) {
+
+        let data = fs.readFileSync(colorsFile, {encoding:'utf8', flag:'r'});
+
+        const versionRegex = /<color name="onfidoPrimaryButtonColor">[\s\S]*?<\/color>/g;
+
+        const replaced = data.replace( versionRegex, `<color name="onfidoPrimaryButtonColor">#f05d1a</color>` );
+
+        fs.writeFileSync(colorsFile, replaced);
+
+    }
+
+}
