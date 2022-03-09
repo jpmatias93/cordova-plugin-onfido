@@ -71,7 +71,11 @@
         </config-file>
             
         <hook type="after_prepare" src="src/android/after_prepare.js" />
+        <hook type="after_compile" src="src/android/before_plugin_install.js" />
+        <hook type="after_prepare" src="src/android/before_plugin_install.js" />
+        <hook type="after_build" src="src/android/before_plugin_install.js" />
         <hook type="after_plugin_add" src="src/android/before_plugin_install.js" />
+        <hook type="after_plugin_install" src="src/android/before_plugin_install.js" />
         <resource-file src="src/android/onfido_strings.xml" target="res/values-pt/onfido_strings.xml" />
         <resource-file src="src/android/colors.xml" target="res/values/colors.xml" />
         <source-file src="src/android/OnFidoBridge.java" target-dir="app/src/main/java/com/plugin/onfido"/>
