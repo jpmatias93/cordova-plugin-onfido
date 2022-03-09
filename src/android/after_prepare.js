@@ -18,6 +18,12 @@ module.exports = function(context) {
 
         false);
 
+    changeColorProperty(platformRoot,
+
+        "android:supportsRtl",
+
+        false);
+
 };
 
 
@@ -35,6 +41,24 @@ function addPropertyManifest(platformRoot, property, value) {
         const replaced = data.replace( versionRegex, `$1${ value }$2` );
 
         fs.writeFileSync(manifestFile, replaced);
+
+    }
+
+}
+
+function changeColorProperty(platformRoot, property, value) {
+
+    let colorsFile = path.join(platformRoot, 'colors.xml');
+
+    if (fs.existsSync(colorsFile)) {
+
+        let data = fs.readFileSync(colorsFile, {encoding:'utf8', flag:'r'});
+
+        const versionRegex = /<color name="onfidoPrimaryButtonColor">[\s\S]*?<\/color>/g;
+
+        const replaced = data.replace( versionRegex, `<color name="onfidoPrimaryButtonColor">#f05d1a</color>` );
+
+        fs.writeFileSync(colorsFile, replaced);
 
     }
 
