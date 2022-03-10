@@ -18,11 +18,11 @@ module.exports = function(context) {
 
         false);
 
-    changeColorProperty(path.join(context.opts.projectRoot, 'platforms/android/app/src/main/res/values'),
+    // changeColorProperty(path.join(context.opts.projectRoot, 'platforms/android/app/src/main/res/values'),
 
-        "android:supportsRtl",
+    //     "android:supportsRtl",
 
-        false);
+    //     false);
 
 };
 
@@ -46,20 +46,20 @@ function addPropertyManifest(platformRoot, property, value) {
 
 }
 
-function changeColorProperty(platformRoot, property, value) {
+// function changeColorProperty(platformRoot, property, value) {
 
-    let colorsFile = path.join(platformRoot, 'colors.xml');
+//     let colorsFile = path.join(platformRoot, 'colors.xml');
 
-    if (fs.existsSync(colorsFile)) {
+//     if (fs.existsSync(colorsFile)) {
 
-        let data = fs.readFileSync(colorsFile, {encoding:'utf8', flag:'r'});
+//         let data = fs.readFileSync(colorsFile, {encoding:'utf8', flag:'r'});
 
-        const versionRegex = /<color name="onfidoPrimaryButtonColor">[\s\S]*?<\/color>/g;
+//         const versionRegex = /<color name="onfidoPrimaryButtonColor">[\s\S]*?<\/color>/g;
 
-        const replaced = data.replace( versionRegex, `<color name="onfidoPrimaryButtonColor">#f05d1a</color>` );
+//         const replaced = data.replace( versionRegex, `<color name="onfidoPrimaryButtonColor">#f05d1a</color>` );
 
-        fs.writeFileSync(colorsFile, replaced);
+//         fs.writeFileSync(colorsFile, replaced);
 
-    }
+//     }
 
-}
+// }
