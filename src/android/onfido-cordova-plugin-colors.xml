@@ -2,4 +2,5 @@
 <resources>
     <color name="onfidoPrimaryButtonColor">#f05d1a</color>
     <color name="onfidoPrimaryButtonColorPressed">#f05d1a</color>
+    <color name="onfidoColorAccent">#f05d1a</color>
 </resources>
