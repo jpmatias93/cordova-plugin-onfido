@@ -34,7 +34,7 @@
     <string name="onfido_app_title_doc_capture_id_za">Cartão de identidade sul-africano</string>
     <string name="onfido_app_title_doc_capture_license_de">Carteira de motorista alemã</string>
     <string name="onfido_app_title_doc_capture_license_fr">Carta de condução francesa</string>
-    <string name="onfido_app_title_doc_confirmation">Verifique a fotografia do seu Documento</string>
+    <string name="onfido_app_title_doc_confirmation">Verifique a fotografia do Documento</string>
     <string name="onfido_app_title_doc_select">Verifique a sua identidade</string>
     <string name="onfido_app_title_doc_video_confirmation">Verifique a sua identidade</string>
     <string name="onfido_app_title_permission">Verifique a sua identidade</string>
